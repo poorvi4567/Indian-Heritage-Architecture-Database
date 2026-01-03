@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Monuments Map</title>
+
+    <!-- Leaflet CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet/dist/leaflet.css"
+    />
+
+    <style>
+        #map {
+            height: 500px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Indian Heritage Monuments Map</h2>
+
+<div id="map"></div>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+    // Center map on India
+    var map = L.map('map').setView([22.5937, 78.9629], 5);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    {% for m in monuments %}
+        L.marker([{{ m.location.latitude }}, {{ m.location.longitude }}])
+            .addTo(map)
+            .bindPopup(
+                "<b>{{ m.name }}</b><br>{{ m.location.city }}, {{ m.location.state }}"
+            );
+    {% endfor %}
+</script>
+
+</body>
+</html>

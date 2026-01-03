@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Filter Monuments</title>
+</head>
+<body>
+
+<h2>Filter Monuments</h2>
+
+<form method="get">
+    <label>State:</label>
+    <input type="text" name="state">
+
+    <br><br>
+
+    <label>City:</label>
+    <input type="text" name="city">
+
+    <br><br>
+
+    <label>Architectural Style:</label>
+    <input type="text" name="style">
+
+    <br><br>
+
+    <button type="submit">Filter</button>
+</form>
+
+<hr>
+
+<h3>Results</h3>
+
+{% for m in monuments %}
+    <p>
+        <b>{{ m.name }}</b><br>
+        {{ m.location.city }}, {{ m.location.state }}<br>
+        Style: {{ m.style.name }}
+    </p>
+    <hr>
+{% empty %}
+    <p>No monuments found.</p>
+{% endfor %}
+
+</body>
+</html>
