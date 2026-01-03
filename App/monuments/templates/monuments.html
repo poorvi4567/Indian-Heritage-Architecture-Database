@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Monuments</title>
+</head>
+<body>
+    <h1>Monuments List</h1>
+
+    {% for monument in monuments %}
+        <p>{{ monument.name }}</p>
+    {% empty %}
+        <p>No monuments found.</p>
+    {% endfor %}
+</body>
+</html>
