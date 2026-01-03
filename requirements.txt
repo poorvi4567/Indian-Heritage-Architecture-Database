@@ -1,0 +1,13 @@
+pdfplumber
+pandas
+requests
+rapidfuzz
+tqdm
+sqlalchemy
+pymongo
+fastapi
+uvicorn
+python-dotenv
+streamlit
+folium
+huggingface_hub

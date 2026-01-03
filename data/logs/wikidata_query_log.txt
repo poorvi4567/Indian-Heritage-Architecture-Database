@@ -1,0 +1,7 @@
+2025-11-17T10:54:31.002741Z  STARTING WIKIDATA ENRICHMENT
+2025-11-17T10:55:33.901023Z  SPARQL ERROR: HTTPSConnectionPool(host='query.wikidata.org', port=443): Read timed out. (read timeout=60)
+2025-11-17T10:56:37.629347Z  SPARQL ERROR: HTTPSConnectionPool(host='query.wikidata.org', port=443): Read timed out. (read timeout=60)
+2025-11-17T10:57:41.351438Z  SPARQL ERROR: HTTPSConnectionPool(host='query.wikidata.org', port=443): Read timed out. (read timeout=60)
+2025-11-17T10:58:45.006437Z  SPARQL ERROR: HTTPSConnectionPool(host='query.wikidata.org', port=443): Read timed out. (read timeout=60)
+2025-11-17T10:59:48.980434Z  SPARQL ERROR: HTTPSConnectionPool(host='query.wikidata.org', port=443): Read timed out. (read timeout=60)
+2025-11-17T11:00:53.206405Z  SPARQL ERROR: HTTPSConnectionPool(host='query.wikidata.org', port=443): Read timed out. (read timeout=60)

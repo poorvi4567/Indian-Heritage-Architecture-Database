@@ -1,0 +1,43 @@
+2025-12-29T10:36:28.668604Z START Wikidata year enrichment, rows=117
+2025-12-29T14:04:15.222630Z START Wikidata year enrichment, rows=117
+2025-12-29T14:07:35.005732Z FILLED idx=4 name='Orchha Fort' qid=Q20873390 year=1501 score=73.33333333333334
+2025-12-29T14:07:35.007109Z FILLED idx=8 name='Banke Bihari Temple' qid=Q3630572 year=1501 score=100.0
+2025-12-29T14:07:35.009127Z FILLED idx=16 name='Dakshineswar Kali Temple' qid=Q1157765 year=1847 score=100.0
+2025-12-29T14:07:35.010127Z FILLED idx=17 name='Dwarkadhish Temple' qid=Q24932536 year=1814 score=86.48648648648648
+2025-12-29T14:07:35.013127Z FILLED idx=18 name='Padmanabhaswamy Temple' qid=Q1473969 year=501 score=100.0
+2025-12-29T14:07:35.015126Z FILLED idx=32 name='Sun Temple' qid=Q2570737 year=1026 score=100.0
+2025-12-29T14:07:35.016127Z FILLED idx=40 name='Sivasagar Sivadol' qid=Q7506933 year=1734 score=100.0
+2025-12-29T14:07:35.017127Z FILLED idx=45 name='Gateway of India' qid=Q864862 year=1924 score=100.0
+2025-12-29T14:07:35.018126Z FILLED idx=46 name='Chhatrapati Shivaji Maharaj Vastu Sangrahalaya' qid=Q1071500 year=1922 score=100.0
+2025-12-29T14:07:35.019126Z FILLED idx=48 name='Victoria Memorial' qid=Q1356352 year=1921 score=100.0
+2025-12-29T14:07:35.020127Z FILLED idx=49 name='Indian Museum' qid=Q1364900 year=1814 score=100.0
+2025-12-29T14:07:35.024127Z FILLED idx=50 name='Statue of Unity' qid=Q7604504 year=2018 score=100.0
+2025-12-29T14:07:35.025126Z FILLED idx=54 name='Amber Fort' qid=Q456817 year=1592 score=100.0
+2025-12-29T14:07:35.026126Z FILLED idx=55 name='Mysore Palace' qid=Q456575 year=1912 score=100.0
+2025-12-29T14:07:35.029127Z FILLED idx=57 name='Ajanta Caves' qid=Q184427 year=-200 score=100.0
+2025-12-29T14:07:35.031126Z FILLED idx=60 name='Lingaraj Temple' qid=Q2365530 year=1000 score=96.7741935483871
+2025-12-29T14:07:35.033126Z FILLED idx=63 name='Shore Temple' qid=Q1144279 year=732 score=100.0
+2025-12-29T14:07:35.036127Z FILLED idx=65 name='Submarine Museum' qid=Q19646417 year=2011 score=100.0
+2025-12-29T14:07:35.037126Z FILLED idx=70 name='Lotus Temple' qid=Q940843 year=1986 score=100.0
+2025-12-29T14:07:35.043126Z FILLED idx=72 name='National Gallery of Modern Art' qid=Q1338832 year=1954 score=100.0
+2025-12-29T14:07:35.045126Z FILLED idx=75 name='Junagarh Fort' qid=Q6311597 year=1589 score=100.0
+2025-12-29T14:07:35.047125Z FILLED idx=76 name='Jaigarh Fort' qid=Q2722759 year=-1000 score=100.0
+2025-12-29T14:07:35.051203Z FILLED idx=82 name='Hazarduari Palace' qid=Q5687746 year=1837 score=100.0
+2025-12-29T14:07:35.052203Z FILLED idx=83 name='Cooch Behar Palace' qid=Q5166812 year=1887 score=100.0
+2025-12-29T14:07:35.053205Z FILLED idx=86 name='Borra Caves' qid=Q4946548 year=1807 score=100.0
+2025-12-29T14:07:35.054203Z FILLED idx=88 name='Ujjayanta Palace' qid=Q3360963 year=1901 score=100.0
+2025-12-29T14:07:35.055203Z FILLED idx=91 name='Salar Jung Museum' qid=Q1864572 year=1951 score=100.0
+2025-12-29T14:07:35.056203Z FILLED idx=92 name='Qutb Shahi Tombs' qid=Q7273006 year=1543 score=93.75
+2025-12-29T14:07:35.056203Z FILLED idx=93 name='Chowmahalla Palace' qid=Q3380670 year=1880 score=100.0
+2025-12-29T14:07:35.057203Z FILLED idx=94 name='Kalighat Kali Temple' qid=Q535970 year=1809 score=100.0
+2025-12-29T14:07:35.058202Z FILLED idx=95 name='Marble Palace' qid=Q283120 year=1768 score=100.0
+2025-12-29T14:07:35.063202Z FILLED idx=96 name='Laxmi Vilas Palace' qid=Q3360979 year=1890 score=100.0
+2025-12-29T14:07:35.067631Z FILLED idx=97 name='Hawa Mahal' qid=Q836531 year=1799 score=100.0
+2025-12-29T14:07:35.068139Z FILLED idx=98 name='City Palace' qid=Q527260 year=1662 score=100.0
+2025-12-29T14:07:35.069144Z FILLED idx=99 name='Jaisalmer Fort' qid=Q3634368 year=1156 score=100.0
+2025-12-29T14:07:35.070144Z FILLED idx=102 name='Shaniwar Wada' qid=Q1351060 year=1732 score=100.0
+2025-12-29T14:07:35.071144Z FILLED idx=107 name='Bara Imambara' qid=Q3630998 year=1784 score=100.0
+2025-12-29T14:07:35.072144Z FILLED idx=109 name='Buland Darwaza' qid=Q3535264 year=1573 score=100.0
+2025-12-29T14:07:35.073144Z FILLED idx=111 name='City Palace' qid=Q527260 year=1662 score=100.0
+2025-12-29T14:07:35.073144Z FILLED idx=113 name='Bangalore Palace' qid=Q3520057 year=1878 score=81.25
+2025-12-29T14:07:35.111373Z COMPLETED Wikidata year enrichment: filled=40 out_of=117 saved=C:\Users\poorv\OneDrive\Desktop\DBMS EL\data\processed\asi_with_years_geocoded_with_wikidata_years.csv
