@@ -1,47 +1,71 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Monuments Map</title>
-
-    <!-- Leaflet CSS -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet/dist/leaflet.css"
-    />
-
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <style>
         #map {
-            height: 500px;
+            height: 600px;
             width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-container {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 20px;
         }
     </style>
 </head>
 
 <body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="{% url 'home' %}" class="nav-brand">🏛️ Indian Heritage</a>
+            <div class="nav-links">
+                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'monument_list' %}">Monuments</a>
+                <a href="{% url 'monuments_map' %}">Map</a>
+                <a href="{% url 'filter_monuments' %}">Filter</a>
+                <a href="{% url 'nlp_search' %}">AI Search</a>
+            </div>
+        </div>
+    </nav>
 
-<h2>Indian Heritage Monuments Map</h2>
+    <div class="container">
+        <h1>Indian Heritage Monuments Map</h1>
 
-<div id="map"></div>
+        <div class="map-container">
+            <div id="map"></div>
+        </div>
+    </div>
 
-<!-- Leaflet JS -->
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // @ts-nocheck
+        var map = L.map('map').setView([22.5937, 78.9629], 5);
 
-<script>
-    // Center map on India
-    var map = L.map('map').setView([22.5937, 78.9629], 5);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors'
-    }).addTo(map);
-
-    {% for m in monuments %}
+        {% for m in monuments %}
         L.marker([{{ m.location.latitude }}, {{ m.location.longitude }}])
             .addTo(map)
             .bindPopup(
-                "<b>{{ m.name }}</b><br>{{ m.location.city }}, {{ m.location.state }}"
+                "<b><a href=\"{% url 'monument_detail' m.monument_id %}\">{{ m.name }}</a></b><br>{{ m.location.city }}, {{ m.location.state }}"
             );
-    {% endfor %}
-</script>
+        {% endfor %}
+    </script>
 
+    <footer>
+        <p>&copy; 2026 Indian Heritage Repository</p>
+    </footer>
 </body>
+
 </html>

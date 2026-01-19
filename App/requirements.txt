@@ -1,2 +1,4 @@
 django
 pymongo
+google-generativeai
+python-dotenv

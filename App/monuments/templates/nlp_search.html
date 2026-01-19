@@ -1,0 +1,145 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Natural Language Search</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .search-container {
+            background: var(--white, #ffffff);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .main-nav {
+            background-color: #fff;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links a {
+            margin-left: 2rem;
+            text-decoration: none;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="{% url 'home' %}" class="nav-brand">🏛️ Indian Heritage</a>
+            <div class="nav-links">
+                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'monument_list' %}">Monuments</a>
+                <a href="{% url 'monuments_map' %}">Map</a>
+                <a href="{% url 'filter_monuments' %}">Filter</a>
+                <a href="{% url 'nlp_search' %}">AI Search</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container search-container">
+        <div class="row mb-4">
+            <div class="col-12 text-center">
+                <h1>Ask About Monuments</h1>
+                <p class="lead">Use natural language to query our database.</p>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <form method="post" action="{% url 'nlp_search' %}">
+                    {% csrf_token %}
+                    <div class="input-group mb-3">
+                        <input type="text" name="query" class="form-control form-control-lg"
+                            placeholder="e.g., Show me Mughal monuments in Delhi" value="{{ query }}" required>
+                        <button class="btn btn-primary" type="submit">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        {% if error %}
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="alert alert-danger" role="alert">
+                    <strong>Error:</strong> {{ error }}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if results %}
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-light">
+                        <h5 class="mb-0">Results</h5>
+                        {% if sql_query %}
+                        <small class="text-muted">Generated SQL: <code>{{ sql_query }}</code></small>
+                        {% endif %}
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-striped">
+                                <thead class="table-dark">
+                                    <tr>
+                                        {% for col in columns %}
+                                        <th scope="col">{{ col }}</th>
+                                        {% endfor %}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for row in results %}
+                                    <tr>
+                                        {% for cell in row %}
+                                        <td>
+                                            {% if cell.url %}
+                                            <a href="{{ cell.url }}" class="text-decoration-none fw-bold">{{ cell.value
+                                                }}</a>
+                                            {% else %}
+                                            {{ cell.value }}
+                                            {% endif %}
+                                        </td>
+                                        {% endfor %}
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+</html>

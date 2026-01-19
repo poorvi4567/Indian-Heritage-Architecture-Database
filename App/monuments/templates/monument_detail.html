@@ -1,0 +1,173 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ monument.name }} - Indian Heritage</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/monument_detail.css' %}">
+</head>
+
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="{% url 'home' %}" class="nav-brand">🏛️ Indian Heritage</a>
+            <div class="nav-links">
+                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'monument_list' %}">Monuments</a>
+                <a href="{% url 'monuments_map' %}">Map</a>
+                <a href="{% url 'filter_monuments' %}">Filter</a>
+                <a href="{% url 'nlp_search' %}">AI Search</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="breadcrumb">
+        <a href="{% url 'home' %}">Home</a> &gt;
+        <a href="{% url 'monument_list' %}">Monuments</a> &gt;
+        <span>{{ monument.name }}</span>
+    </div>
+
+    <div class="container">
+        <!-- Hero Image Section -->
+        <div class="monument-hero">
+            {% if mongo_data and mongo_data.image_url %}
+            <img src="{{ mongo_data.image_url }}" alt="{{ monument.name }}" class="monument-image">
+            {% else %}
+            <img src="{{ placeholder_image }}" alt="No image available" class="monument-image placeholder">
+            {% endif %}
+        </div>
+
+        <!-- Main Monument Info -->
+        <div class="monument-header">
+            <h1>{{ monument.name }}</h1>
+            {% if monument.monument_type %}
+            <span class="monument-type-badge">{{ monument.monument_type }}</span>
+            {% endif %}
+        </div>
+
+        <!-- Core Information (Always from SQLite) -->
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>📍 Location</h3>
+                <p><strong>City:</strong> {{ monument.location.city }}</p>
+                <p><strong>State:</strong> {{ monument.location.state }}</p>
+                <p><strong>Zone:</strong> {{ monument.location.zone }}</p>
+                {% if monument.location.latitude and monument.location.longitude %}
+                <p><strong>Coordinates:</strong> {{ monument.location.latitude }}, {{ monument.location.longitude }}</p>
+                {% endif %}
+            </div>
+
+            {% if monument.style %}
+            <div class="info-card">
+                <h3>🏗️ Architectural Style</h3>
+                <p><strong>Style:</strong> {{ monument.style.name }}</p>
+                {% if monument.style.description %}
+                <p class="style-description">{{ monument.style.description }}</p>
+                {% endif %}
+            </div>
+            {% endif %}
+
+            {% if monument.period %}
+            <div class="info-card">
+                <h3>📅 Historical Period</h3>
+                {% if monument.year %}
+                <p><strong>Year:</strong> {{ monument.year }}</p>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- MongoDB Data Section (with fallback) -->
+        {% if mongo_error %}
+        <div class="alert alert-warning">
+            <strong>⚠️ Limited Information:</strong> Additional details from MongoDB Atlas are temporarily unavailable.
+            Showing basic information only.
+        </div>
+        {% endif %}
+
+        {% if mongo_data %}
+        <!-- Significance -->
+        {% if mongo_data.significance %}
+        <div class="significance-section">
+            <h2>Historical Significance</h2>
+            <p class="significance-text">{{ mongo_data.significance }}</p>
+        </div>
+        {% endif %}
+
+        <!-- Visitor Information -->
+        <div class="visitor-info-grid">
+            {% if mongo_data.google_review_rating %}
+            <div class="info-card highlight">
+                <h3>⭐ Rating</h3>
+                <p class="rating-score">{{ mongo_data.google_review_rating }}/5</p>
+                {% if mongo_data.num_google_reviews_lakhs %}
+                <p class="review-count">{{ mongo_data.num_google_reviews_lakhs }} lakh reviews</p>
+                {% endif %}
+            </div>
+            {% endif %}
+
+            {% if mongo_data.entrance_fee_inr is not none %}
+            <div class="info-card highlight">
+                <h3>💰 Entrance Fee</h3>
+                <p class="fee-amount">₹{{ mongo_data.entrance_fee_inr }}</p>
+            </div>
+            {% endif %}
+
+            {% if mongo_data.time_to_visit_hours %}
+            <div class="info-card highlight">
+                <h3>⏱️ Visit Duration</h3>
+                <p>{{ mongo_data.time_to_visit_hours }} hours</p>
+            </div>
+            {% endif %}
+
+            {% if mongo_data.weekly_off %}
+            <div class="info-card highlight">
+                <h3>🗓️ Weekly Off</h3>
+                <p>{{ mongo_data.weekly_off }}</p>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Additional Details -->
+        <div class="details-grid">
+            {% if mongo_data.establishment_year %}
+            <div class="detail-item">
+                <strong>Established:</strong> {{ mongo_data.establishment_year }}
+            </div>
+            {% endif %}
+
+            {% if mongo_data.best_time_to_visit %}
+            <div class="detail-item">
+                <strong>Best Time to Visit:</strong> {{ mongo_data.best_time_to_visit }}
+            </div>
+            {% endif %}
+
+            {% if mongo_data.airport_within_50km is not none %}
+            <div class="detail-item">
+                <strong>Airport Nearby:</strong> {{ mongo_data.airport_within_50km|yesno:"Yes,No" }}
+            </div>
+            {% endif %}
+
+            {% if mongo_data.dslr_allowed is not none %}
+            <div class="detail-item">
+                <strong>DSLR Photography:</strong> {{ mongo_data.dslr_allowed|yesno:"Allowed,Not Allowed" }}
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        <div class="back-navigation">
+            <a href="{% url 'monument_list' %}" class="btn btn-secondary">← Back to List</a>
+            <a href="{% url 'filter_monuments' %}" class="btn btn-secondary">Filter Monuments</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Indian Heritage Repository</p>
+    </footer>
+</body>
+
+</html>

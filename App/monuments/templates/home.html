@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Heritage Repository</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="{% url 'home' %}" class="nav-brand">🏛️ Indian Heritage</a>
+            <div class="nav-links">
+                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'monument_list' %}">Monuments</a>
+                <a href="{% url 'monuments_map' %}">Map</a>
+                <a href="{% url 'filter_monuments' %}">Filter</a>
+                <a href="{% url 'nlp_search' %}">AI Search</a>
+            </div>
+        </div>
+    </nav>
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1>Indian Heritage Repository</h1>
+            <p class="tagline">Preserving India's Architectural Legacy Through Technology</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <section class="about-section">
+            <h2>About This Project</h2>
+            <p>
+                This platform serves as a <strong>centralized digital repository</strong> of India's rich
+                architectural heritage and historical monuments. Our mission is to make information about
+                India's cultural treasures accessible, searchable, and comprehensive.
+            </p>
+            <p>
+                By combining structured relational data with flexible document storage, we provide detailed
+                information on thousands of monuments including their history, architectural styles, visitor
+                information, and cultural significance.
+            </p>
+        </section>
+
+        <section class="features-section">
+            <h2>Project Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🏛️</div>
+                    <h3>Comprehensive Database</h3>
+                    <p>Structured SQLite database with relational data + MongoDB Atlas for rich descriptive content</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📍</div>
+                    <h3>Geographic Mapping</h3>
+                    <p>Interactive maps showing monument locations across India</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Advanced Filtering</h3>
+                    <p>Search by state, city, architectural style, and more</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⭐</div>
+                    <h3>Visitor Information</h3>
+                    <p>Ratings, entrance fees, timings, and practical travel details</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI-Powered Search</h3>
+                    <p>Query the database using natural language powered by Gemini AI</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="navigation-section">
+            <h2>Explore Indian Heritage</h2>
+            <div class="nav-cards">
+                <a href="{% url 'monument_list' %}" class="nav-card">
+                    <h3>📜 Browse Monuments</h3>
+                    <p>View complete list of all heritage sites</p>
+                </a>
+                <a href="{% url 'monuments_map' %}" class="nav-card">
+                    <h3>🗺️ Interactive Map</h3>
+                    <p>Explore monuments on an interactive map</p>
+                </a>
+                <a href="{% url 'filter_monuments' %}" class="nav-card">
+                    <h3>🔎 Search & Filter</h3>
+                    <p>Find monuments by location or style</p>
+                </a>
+                <a href="{% url 'nlp_search' %}" class="nav-card">
+                    <h3>🤖 AI Search</h3>
+                    <p>Ask questions in plain English</p>
+                </a>
+            </div>
+        </section>
+
+        <section class="tech-section">
+            <h2>Technology Stack</h2>
+            <ul class="tech-list">
+                <li><strong>Backend:</strong> Django (Python)</li>
+                <li><strong>Relational Database:</strong> SQLite (monuments, locations, styles, periods)</li>
+                <li><strong>NoSQL Database:</strong> MongoDB Atlas (visitor info, reviews, images, descriptions)</li>
+                <li><strong>Frontend:</strong> HTML5, CSS3, JavaScript</li>
+                <li><strong>Mapping:</strong> Leaflet.js</li>
+            </ul>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Indian Heritage Repository | Preserving Culture Through Technology</p>
+    </footer>
+</body>
+
+</html>
