@@ -4,6 +4,11 @@ from .models import Monument
 from pymongo import MongoClient
 from pymongo.errors import ConnectionFailure, ServerSelectionTimeoutError
 import google.generativeai as genai
+from django.contrib.auth.models import User, Group
+from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 from django.db import connection
 
 def home(request):
@@ -192,3 +197,49 @@ def nlp_search(request):
         'error': error,
         'sql_query': sql_query
     })
+
+def signup_view(request):
+    if request.method == "POST":
+        username = request.POST["username"]
+        password = request.POST["password"]
+
+        if User.objects.filter(username=username).exists():
+            return render(request, "signup.html", {"error": "Username already taken."})
+
+        user = User.objects.create_user(
+            username=username,
+            password=password
+        )
+
+        # assign normal user role
+        group, _ = Group.objects.get_or_create(name="user")
+        user.groups.add(group)
+
+        # Log the user in directly after signup
+        login(request, user)
+        return redirect("home")
+
+    return render(request, "signup.html")
+
+def login_view(request):
+    if request.method == "POST":
+        user = authenticate(
+            request,
+            username=request.POST["username"],
+            password=request.POST["password"]
+        )
+
+        if user is not None:
+            login(request, user)
+            return redirect("home")
+        else:
+            return render(request, "login.html", {"error": "Invalid username or password"})
+
+    return render(request, "login.html")
+
+def logout_view(request):
+    logout(request)
+    return redirect("login")
+
+def add_monument(request):
+    return render(request, "add_monument.html")
