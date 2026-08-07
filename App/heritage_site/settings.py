@@ -130,7 +130,7 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # MongoDB Atlas Configuration
-MONGODB_URI = "mongodb+srv://poorvibellur:JayJeeBell_311005@mycluster.vcwrtlj.mongodb.net/helloApp?retryWrites=true&w=majority&appName=MyCluster"
+MONGODB_URI = os.getenv('MONGODB_URI')
 MONGODB_DB_NAME = "heritage"
 MONGODB_COLLECTION = "monument_details"
 
